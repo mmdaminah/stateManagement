@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { add } from '../redux/taskReducer/taskReducer'
 const AddTasks = () => {
     const [input,setInput] = useState("")
     const id = useSelector(state=> state.tasks.id)
     const dispatch = useDispatch();
     const handleAddTask = ()=>{
-        dispatch({type:"add",payload:{id,name:input}})
+        dispatch(add({id,name:input}))
         setInput("")
     }
     return (

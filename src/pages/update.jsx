@@ -1,6 +1,7 @@
 import React, { useState ,useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { update } from '../redux/taskReducer/taskReducer'
 const Update = () => {
     const idToUpdate = useSelector(state=>state.tasks.idToUpdate)
     const tasks = useSelector(state=>state.tasks.tasks)
@@ -8,7 +9,7 @@ const Update = () => {
     const [input,setInput] = useState("")
     const navigate = useNavigate()
     const handleUpdate = ()=>{
-        dispatch({type:'update',payload:{id:idToUpdate,name:input}})
+        dispatch(update({id:idToUpdate,name:input}))
         navigate('/tasks')
     }
     useEffect(()=>{

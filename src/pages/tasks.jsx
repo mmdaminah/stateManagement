@@ -2,15 +2,16 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { remove, setIdToUpdate } from '../redux/taskReducer/taskReducer'
 const Tasks = () => {
     const tasks = useSelector(state=>state.tasks.tasks)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleDelete = (id)=>{
-        dispatch({type:'delete',payload:id})
+        dispatch(remove(id))
     }
     const handleUpdate = (id)=>{
-        dispatch({type:'setIdToUpdate',payload:id})
+        dispatch(setIdToUpdate(id))
         navigate('/update')
     }
     return (
